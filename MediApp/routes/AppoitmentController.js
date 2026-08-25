@@ -4,6 +4,7 @@ import AppointmentService from "../services/AppointmentService";
 const router = express.Router();
 
 router.get("/appointments", async (req, res) => {
+    
     try {
         const appointments = await AppointmentService.getAllAppointments();
         res.send(appointments);
@@ -15,6 +16,7 @@ router.get("/appointments", async (req, res) => {
 
 router.get("/getAppointment/:id", async (req, res) => {
     const { id } = req.params;
+    
     try {
         const appointment = await AppointmentService.getAppointment(id);
         res.send(appointment);
@@ -26,6 +28,7 @@ router.get("/getAppointment/:id", async (req, res) => {
 
 router.post("/postAppointment", async (req, res) => {
     const { date, doctorId, pacientId } = req.body;
+    
     try {
         const appointment = await AppointmentService.saveAppointment({ date, doctorId, pacientId });
         res.send(appointment);
@@ -38,6 +41,7 @@ router.post("/postAppointment", async (req, res) => {
 router.put("/appointments/:id", async (req, res) => {
     const { id } = req.params;
     const { date, doctorId, pacientId } = req.body;
+    
     try {
         const appointment = await AppointmentService.updateAppointment(id, { date, doctorId, pacientId });
         res.send(appointment);
@@ -49,6 +53,7 @@ router.put("/appointments/:id", async (req, res) => {
 
 router.delete("/appointments/:id", async (req, res) => {
     const { id } = req.params;
+    
     try {
         const appointment = await AppointmentService.deleteAppointment(id);
         res.send(appointment);

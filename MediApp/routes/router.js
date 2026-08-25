@@ -13,8 +13,8 @@ router.get(
 });
 
 router.uuse("/", appointmentController);
-router.use("/", doctorController);
-router.use("/", pacientController);
-router.use("/", prescriptionController);
+router.use("/",  doctorController);
+router.use("/",  pacientController);
+router.use("/",  prescriptionController);
 
 export default router;
