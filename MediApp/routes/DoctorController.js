@@ -17,8 +17,8 @@ router.get("/doctors", async (req, res) => {
 router.get("/getDoctor/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        const appointment = await AppointmentService.getAppointment(id);
-        res.send(appointment);
+        const doctor = await DoctorService.getDoctor(id);
+        res.send(doctor);
     }   catch (error) {
         console.log(error);
         res.status(500).send(error);
@@ -37,12 +37,13 @@ router.post("/postDoctor", async (req, res) => {
     }
 });
 
-router.put("/appointments/:id", async (req, res) => {
+router.put("/doctors/:id", async (req, res) => {
     const { id } = req.params;
-    const { date, doctorId, pacientId } = req.body;
+    const { name, login, password, medicalSpecialty, medicalRegistration, email, phone } = req.body;
+    
     try {
-        const appointment = await AppointmentService.updateAppointment(id, { date, doctorId, pacientId });
-        res.send(appointment);
+        const doctor = await DoctorService.updateDoctor(id, { name, login, password, medicalSpecialty, medicalRegistration, email, phone });
+        res.send(doctor);
     }   catch (error) {
         console.log(error);
         res.status(500).send(error);
